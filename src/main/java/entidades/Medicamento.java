@@ -10,4 +10,5 @@ import lombok.Setter;
 public class Medicamento {
     private String nombre;
     private int cantida;
+    private int id;
 }

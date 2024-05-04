@@ -1,5 +1,8 @@
 package servicios;
 
+import entidades.Medico;
+import entidades.Paciente;
+
 public class AtencionMedicoService {
     private static AtencionMedicoService instancia;
 
@@ -14,5 +17,12 @@ public class AtencionMedicoService {
         return instancia;
     }
 
+    public boolean tenerTurno (Paciente paciente){
+        return true;
+    }
+
+    public Object atenderPaciente (Medico medico, Paciente paciente) {
+        return null;
+    }
 }
 

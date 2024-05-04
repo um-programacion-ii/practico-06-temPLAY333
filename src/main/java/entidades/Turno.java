@@ -9,6 +9,7 @@ import lombok.Setter;
 @AllArgsConstructor
 public class Turno {
     private Medico medico;
+    private int id;
     private int horario;
     private String consultorio;
 }

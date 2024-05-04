@@ -11,7 +11,6 @@ import java.util.List;
 @Setter
 public class Farmacia {
     private static Farmacia instancia;
-    private GestionFarmaciaService gestionFarmaciaService = GestionFarmaciaService.getInstancia();
     private MedicamentoDAO medicamentoDAO;
 
     private Farmacia() {
@@ -23,4 +22,5 @@ public class Farmacia {
             instancia = new Farmacia();
         }
         return instancia;
+    }
 }

@@ -12,5 +12,5 @@ import java.util.List;
 public class Receta {
     private List<Medicamento> medicamentos;
     private Medico medico;
-
+    private String datos;
 }

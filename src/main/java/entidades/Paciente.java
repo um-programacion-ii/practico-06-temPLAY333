@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
+import servicios.GestionTurnoService;
 
 @Getter
 @Setter
@@ -15,20 +16,4 @@ public class Paciente {
     private ObraSocial os;
     private Turno turno = null;
     private Receta receta = null;
-
-    public void pedirTurno (Clinica clinica, Especialidad especialidad) {
-
-    }
-
-    public void pedirTurnoParticular (Clinica clinica, Especialidad especialidad) {
-
-    }
-
-    public void tomarTurno(Medico medico) {
-
-    }
-
-    public void concurrirFarmacia() {
-
-    }
 }

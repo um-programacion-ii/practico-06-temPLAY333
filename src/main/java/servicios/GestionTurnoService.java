@@ -1,9 +1,10 @@
 package servicios;
 
-import entidades.Paciente;
+import entidades.*;
 
 public class GestionTurnoService {
     private static GestionTurnoService instancia;
+    private Clinica clinica = Clinica.getInstancia();
 
     private GestionTurnoService() {
         // constructor privado para prevenir instanciación
@@ -16,7 +17,23 @@ public class GestionTurnoService {
         return instancia;
     }
 
-    public void pedirTurno(Paciente paciente) {
+    public void ingresarPaciente(Paciente paciente) {
+
+    }
+
+    public String mostarMedicos(Especialidad especialidad) {
+        return null;
+    }
+
+    public String mostrarMedicos(ObraSocial os, Especialidad especialidad) {
+        return null;
+    }
+
+    public void crearTurno(Paciente paciente, Medico medico) {
+
+    }
+
+    public void finalizarTurno(Paciente paciente) {
 
     }
 }

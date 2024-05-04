@@ -1,25 +1,22 @@
+import dao.*;
 import entidades.Medico;
 import entidades.Clinica;
 
-import java.util.List;
-
 public class Contenedor {
-    private static Contenedor instance;
-    private List<Medico> medicos;
-    private List<Clinica> especialidades;
+    public static MedicamentoDAO MedicamentosDB = new MedicamentoDAOImpl();
+    public static MedicoDAO MedicosDB = new MedicoDAOImpl();
+    public static PacienteDAO PacientesDB = new PacienteDAOImpl();
 
-    private Contenedor() {
-        // Aquí puedes instanciar las entidades que necesites
-        // Por ejemplo:
-        // pacientes = new ArrayList<>();
-        // medicos = new ArrayList<>();
-        // especialidades = new ArrayList<>();
-    }
+    private Contenedor() {}
 
-    public static Contenedor getInstance() {
-        if (instance == null) {
-            instance = new Contenedor();
-        }
-        return instance;
+    public static void inicializar() {
+        // Crear instancias de Medico
+        // Medico medico1 = new Medico();
+        // Medico medico2 = new Medico();
+        // ...
+
+        // MedicosDB.save(medico1);
+        // MedicosDB.save(medico2);
+        // ...
     }
 }
