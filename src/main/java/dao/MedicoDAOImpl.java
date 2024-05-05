@@ -7,7 +7,19 @@ import java.util.ArrayList;
 import java.util.Map;
 
 public class MedicoDAOImpl implements MedicoDAO {
+    private static MedicoDAOImpl instance;
     private Map<Integer, Medico> medicos = new HashMap<>();
+
+    private MedicoDAOImpl() {
+        // constructor privado para prevenir instanciación
+    }
+
+    public static MedicoDAOImpl getInstance() {
+        if (instance == null) {
+            instance = new MedicoDAOImpl();
+        }
+        return instance;
+    }
 
     @Override
     public Medico get(int dni) {

@@ -21,7 +21,7 @@ public class GestionTurnoService {
 
     }
 
-    public String mostarMedicos(Especialidad especialidad) {
+    public String mostrarMedicos(Especialidad especialidad) {
         return null;
     }
 

@@ -9,6 +9,6 @@ import lombok.Setter;
 @AllArgsConstructor
 public class Medicamento {
     private String nombre;
-    private int cantida;
+    private int cantidad;
     private int id;
 }

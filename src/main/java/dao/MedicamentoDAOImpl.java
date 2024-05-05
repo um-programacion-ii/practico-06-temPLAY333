@@ -7,7 +7,19 @@ import java.util.ArrayList;
 import java.util.Map;
 
 public class MedicamentoDAOImpl implements MedicamentoDAO {
+    private static MedicamentoDAOImpl instance;
     private Map<Integer, Medicamento> medicamentos = new HashMap<>();
+
+    private MedicamentoDAOImpl() {
+        // constructor privado para prevenir instanciación
+    }
+
+    public static MedicamentoDAOImpl getInstance() {
+        if (instance == null) {
+            instance = new MedicamentoDAOImpl();
+        }
+        return instance;
+    }
 
     @Override
     public Medicamento get(int id) {

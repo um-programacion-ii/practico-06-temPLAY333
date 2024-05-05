@@ -7,8 +7,20 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class TurnoDAOImpl implements TurnoDAO{
+public class TurnoDAOImpl implements TurnoDAO {
+    private static TurnoDAOImpl instance;
     private Map<Integer, Turno> turnos = new HashMap<>();
+
+    private TurnoDAOImpl() {
+        // constructor privado para prevenir instanciación
+    }
+
+    public static TurnoDAOImpl getInstance() {
+        if (instance == null) {
+            instance = new TurnoDAOImpl();
+        }
+        return instance;
+    }
 
     @Override
     public Turno get(int id) {

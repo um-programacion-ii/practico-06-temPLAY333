@@ -7,7 +7,19 @@ import java.util.ArrayList;
 import java.util.Map;
 
 public class PacienteDAOImpl implements PacienteDAO {
+    private static PacienteDAOImpl instance;
     private Map<Integer, Paciente> pacientes = new HashMap<>();
+
+    private PacienteDAOImpl() {
+        // constructor privado para prevenir instanciación
+    }
+
+    public static PacienteDAOImpl getInstance() {
+        if (instance == null) {
+            instance = new PacienteDAOImpl();
+        }
+        return instance;
+    }
 
     @Override
     public Paciente get(int dni) {
