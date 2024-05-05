@@ -1,5 +1,6 @@
 package dao;
 
+import entidades.Medico;
 import entidades.Paciente;
 import java.util.HashMap;
 import java.util.List;
@@ -33,16 +34,16 @@ public class PacienteDAOImpl implements PacienteDAO {
 
     @Override
     public void save(Paciente paciente) {
-        pacientes.put(paciente.getDni(), paciente);
+        DAOUtils.saveIfAbsent(pacientes, paciente.getId(), paciente);
     }
 
     @Override
     public void update(Paciente paciente, String[] params) {
-        pacientes.put(paciente.getDni(), paciente);
+        pacientes.put(paciente.getId(), paciente);
     }
 
     @Override
     public void delete(Paciente paciente) {
-        pacientes.remove(paciente.getDni());
+        pacientes.remove(paciente.getId());
     }
 }

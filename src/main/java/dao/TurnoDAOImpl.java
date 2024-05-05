@@ -1,5 +1,6 @@
 package dao;
 
+import entidades.Medico;
 import entidades.Turno;
 
 import java.util.ArrayList;
@@ -34,9 +35,8 @@ public class TurnoDAOImpl implements TurnoDAO {
 
     @Override
     public void save(Turno turno) {
-        turnos.put(turno.getId(), turno);
+        DAOUtils.saveIfAbsent(turnos, turno.getId(), turno);
     }
-
     @Override
     public void update(Turno turno, String[] params) {
         turnos.put(turno.getId(), turno);

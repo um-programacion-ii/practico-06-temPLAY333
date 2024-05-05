@@ -55,6 +55,14 @@ public class Contenedor {
             }
         }
 
+        // Crear Turnos
+        Medico medico1 = MedicosDB.get(1); // Asume que el medico con id 1 existe
+        Medico medico2 = MedicosDB.get(2); // Asume que el medico con id 2 existe
+        Turno turno1 = new Turno(medico1, 1, "10:00", "A");
+        Turno turno2 = new Turno(medico2, 2, "11:00", "B");
+        TurnosDB.save(turno1);
+        TurnosDB.save(turno2);
+
         // Crear Pacientes
         String[] nombresPacientes = {"Mariana", "Lopez"};
         String[] apellidosPacientes = {"Ricardo", "Corazon de Leon"};
@@ -62,12 +70,13 @@ public class Contenedor {
         PacientesDB.save(paciente);
         paciente = new Paciente(nombresPacientes[1], apellidosPacientes[1], 1, os2, null, null);
         PacientesDB.save(paciente);
+        paciente = new Paciente("Lionhart", "Euler", 3, os1, turno1, null);
+        PacientesDB.save(paciente);
 
         // Crear Medicamentos
         Medicamento medicamento = new Medicamento("Paracetamol",10,1);
         MedicamentosDB.save(medicamento);
         medicamento = new Medicamento("Buscapina",4,2);
         MedicamentosDB.save(medicamento);
-
     }
 }

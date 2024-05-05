@@ -33,16 +33,16 @@ public class MedicoDAOImpl implements MedicoDAO {
 
     @Override
     public void save(Medico medico) {
-        medicos.put(medico.getDni(), medico);
+        DAOUtils.saveIfAbsent(medicos, medico.getId(), medico);
     }
 
     @Override
     public void update(Medico medico, String[] params) {
-        medicos.put(medico.getDni(), medico);
+        medicos.put(medico.getId(), medico);
     }
 
     @Override
     public void delete(Medico medico) {
-        medicos.remove(medico.getDni());
+        medicos.remove(medico.getId());
     }
 }

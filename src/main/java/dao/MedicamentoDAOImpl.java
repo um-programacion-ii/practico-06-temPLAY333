@@ -1,6 +1,8 @@
 package dao;
 
 import entidades.Medicamento;
+import entidades.Medico;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.ArrayList;
@@ -33,7 +35,7 @@ public class MedicamentoDAOImpl implements MedicamentoDAO {
 
     @Override
     public void save(Medicamento medicamento) {
-        medicamentos.put(medicamento.getId(), medicamento);
+        DAOUtils.saveIfAbsent(medicamentos, medicamento.getId(), medicamento);
     }
 
     @Override

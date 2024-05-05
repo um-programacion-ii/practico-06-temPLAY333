@@ -1,20 +1,18 @@
 package entidades;
 
 import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
 import servicios.AtencionMedicoService;
 
 import java.util.List;
 
-@Getter
-@Setter
+@Data
 @AllArgsConstructor
 public class Medico {
     private static AtencionMedicoService atencionMedicoService = AtencionMedicoService.getInstancia();
     private String nombre;
     private String apellido;
-    private int dni;
+    private int id;
     private List<ObraSocial> os;
     private Especialidad especialidad;
 
