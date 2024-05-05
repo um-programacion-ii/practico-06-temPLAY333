@@ -39,7 +39,7 @@ public class MedicamentoDAOImpl implements MedicamentoDAO {
     }
 
     @Override
-    public void update(Medicamento medicamento, String[] params) {
+    public void update(Medicamento medicamento) {
         medicamentos.put(medicamento.getId(), medicamento);
     }
 

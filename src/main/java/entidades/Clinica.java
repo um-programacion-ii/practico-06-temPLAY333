@@ -1,9 +1,6 @@
 package entidades;
 
-import dao.MedicoDAO;
-import dao.PacienteDAO;
-import dao.TurnoDAO;
-import dao.TurnoDAOImpl;
+import dao.*;
 import lombok.Getter;
 import lombok.Setter;
 import servicios.GestionTurnoService;
@@ -12,9 +9,9 @@ import servicios.GestionTurnoService;
 @Setter
 public class Clinica {
     private static Clinica instancia;
-    private PacienteDAO pacienteDAO;
-    private MedicoDAO medicoDAO;
-    private TurnoDAO turnoDAO;
+    private PacienteDAO pacienteDAO = PacienteDAOImpl.getInstance();
+    private MedicoDAO medicoDAO = MedicoDAOImpl.getInstance();
+    private TurnoDAO turnoDAO = TurnoDAOImpl.getInstance();
 
     private Clinica() {
         // constructor privado para prevenir instanciación

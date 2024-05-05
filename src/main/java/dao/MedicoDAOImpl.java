@@ -37,7 +37,7 @@ public class MedicoDAOImpl implements MedicoDAO {
     }
 
     @Override
-    public void update(Medico medico, String[] params) {
+    public void update(Medico medico) {
         medicos.put(medico.getId(), medico);
     }
 

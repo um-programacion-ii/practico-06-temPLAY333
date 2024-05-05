@@ -56,8 +56,8 @@ public class Contenedor {
         }
 
         // Crear Turnos
-        Medico medico1 = MedicosDB.get(1); // Asume que el medico con id 1 existe
-        Medico medico2 = MedicosDB.get(2); // Asume que el medico con id 2 existe
+        Medico medico1 = MedicosDB.get(1);
+        Medico medico2 = MedicosDB.get(2);
         Turno turno1 = new Turno(medico1, 1, "10:00", "A");
         Turno turno2 = new Turno(medico2, 2, "11:00", "B");
         TurnosDB.save(turno1);

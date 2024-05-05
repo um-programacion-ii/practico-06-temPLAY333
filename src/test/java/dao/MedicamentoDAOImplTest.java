@@ -57,7 +57,7 @@ public class MedicamentoDAOImplTest {
     @Test
     public void testModificarYActualizarMedicamento() {
         medicamento.setNombre("Nuevo nombre");
-        medicamentoDAO.update(medicamento, null);
+        medicamentoDAO.update(medicamento);
         Medicamento medicamentoModificado = medicamentoDAO.get(medicamento.getId());
         assertEquals("Nuevo nombre", medicamentoModificado.getNombre());
     }

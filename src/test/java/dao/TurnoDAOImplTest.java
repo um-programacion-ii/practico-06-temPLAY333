@@ -57,7 +57,7 @@ public class TurnoDAOImplTest {
     @Test
     public void testModificarYActualizarTurno() {
         turno.setHorario("Nueva hora");
-        turnoDAO.update(turno, null);
+        turnoDAO.update(turno);
         Turno turnoModificado = turnoDAO.get(turno.getId());
         assertEquals("Nueva hora", turnoModificado.getHorario());
     }

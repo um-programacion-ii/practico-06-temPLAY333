@@ -38,7 +38,7 @@ public class TurnoDAOImpl implements TurnoDAO {
         DAOUtils.saveIfAbsent(turnos, turno.getId(), turno);
     }
     @Override
-    public void update(Turno turno, String[] params) {
+    public void update(Turno turno) {
         turnos.put(turno.getId(), turno);
     }
 

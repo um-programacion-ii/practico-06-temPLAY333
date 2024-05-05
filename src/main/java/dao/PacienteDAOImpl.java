@@ -38,7 +38,7 @@ public class PacienteDAOImpl implements PacienteDAO {
     }
 
     @Override
-    public void update(Paciente paciente, String[] params) {
+    public void update(Paciente paciente) {
         pacientes.put(paciente.getId(), paciente);
     }
 

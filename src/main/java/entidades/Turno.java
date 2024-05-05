@@ -5,7 +5,7 @@ import lombok.Data;
 
 @Data
 @AllArgsConstructor
-public class Turno {
+public class Turno extends EntidadDeDB{
     private Medico medico;
     private int id;
     private String horario;
