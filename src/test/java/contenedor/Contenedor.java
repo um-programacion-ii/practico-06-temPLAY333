@@ -63,20 +63,25 @@ public class Contenedor {
         TurnosDB.save(turno1);
         TurnosDB.save(turno2);
 
-        // Crear Pacientes
-        String[] nombresPacientes = {"Mariana", "Lopez"};
-        String[] apellidosPacientes = {"Ricardo", "Corazon de Leon"};
-        Paciente paciente = new Paciente(nombresPacientes[0], apellidosPacientes[0],2, os1, null, null);
-        PacientesDB.save(paciente);
-        paciente = new Paciente(nombresPacientes[1], apellidosPacientes[1], 1, os2, null, null);
-        PacientesDB.save(paciente);
-        paciente = new Paciente("Lionhart", "Euler", 3, os1, turno1, null);
-        PacientesDB.save(paciente);
-
         // Crear Medicamentos
-        Medicamento medicamento = new Medicamento("Paracetamol",10,1);
+        Medicamento medicamento = new Medicamento("Ibuprofeno",50,2);
         MedicamentosDB.save(medicamento);
-        medicamento = new Medicamento("Buscapina",4,2);
+        medicamento = new Medicamento("Medicamento",50,1);
         MedicamentosDB.save(medicamento);
+
+        // Crear Receta
+        List<Medicamento> medicamentos = new ArrayList<>();
+        medicamentos.add(medicamento);
+        Receta receta = new Receta(medicamentos, medico1, "No se cuide");
+
+        // Crear Pacientes
+        Paciente paciente = new Paciente("Mariana","Lopez",1, os1, null, null);
+        PacientesDB.save(paciente);
+        paciente = new Paciente("Ricardo","Corazon de Leon", 2, os2, null, null);
+        PacientesDB.save(paciente);
+        paciente = new Paciente("Lionheart", "Euler", 3, os1, turno1, null);
+        PacientesDB.save(paciente);
+        paciente = new Paciente("Enfermo", "Mental", 4, os1, null, receta);
+        PacientesDB.save(paciente);
     }
 }

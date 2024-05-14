@@ -1,9 +1,7 @@
 package servicios;
 
-import entidades.Medicamento;
-import entidades.Medico;
-import entidades.Paciente;
-import entidades.Receta;
+import dao.MedicamentoDAO;
+import entidades.*;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -15,6 +13,7 @@ import java.util.Random;
 @Getter
 public class AtencionMedicoService {
     private static AtencionMedicoService instancia;
+    private Farmacia farmacia = Farmacia.getInstancia();
     private Random random = new Random();
 
     private AtencionMedicoService() {
@@ -37,7 +36,7 @@ public class AtencionMedicoService {
     }
 
     public void atenderPaciente (Paciente paciente, Medico medico) {
-        String[] medicamentosPosibles = {"Medicamento1", "Medicamento2", "Medicamento3"};
+        MedicamentoDAO medicamentosPosibles = farmacia.getMedicamentoDAO();
 
         if (random.nextBoolean()) {
             int cantidadMedicamentos = random.nextInt(2) + 1; // Entre 1 y 2 medicamentos
@@ -45,10 +44,12 @@ public class AtencionMedicoService {
 
             for (int i = 0; i < cantidadMedicamentos; i++) {
                 int dosisAleatoria = random.nextInt(20) + 1;  // Dosis entre 1 y 20
-                int idMedicamento = random.nextInt(medicamentosPosibles.length);
-                Medicamento medicamentoAleatorio = new Medicamento(medicamentosPosibles[idMedicamento],
+                int idMedicamento = random.nextInt(medicamentosPosibles.getAll().size())+1;
+                String nombreMedicamento = medicamentosPosibles.get(idMedicamento).getNombre();
+
+                Medicamento medicamentoAleatorio = new Medicamento(nombreMedicamento,
                                                                    dosisAleatoria,
-                                                                   idMedicamento + 1);
+                                                                   idMedicamento);
 
                 if (!medicamentos.contains(medicamentoAleatorio)) {
                     medicamentos.add(medicamentoAleatorio);
