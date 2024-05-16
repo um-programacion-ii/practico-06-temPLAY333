@@ -4,6 +4,7 @@ import contenedor.Contenedor;
 import entidades.*;
 import excepciones.EntidadNotNullException;
 import excepciones.EntidadNullException;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -21,8 +22,15 @@ public class GestionTurnoServiceTest {
     public void setUp() {
         gestionTurnoService = GestionTurnoService.getInstancia();
         contenedor = new Contenedor();
+        contenedor.init();
         medico = contenedor.MedicosDB.get(1);
         paciente = contenedor.PacientesDB.get(1);
+    }
+
+    @AfterEach
+    public void tearDown() {
+        contenedor.reset();
+        contenedor = null;
     }
 
     @Test
@@ -30,6 +38,7 @@ public class GestionTurnoServiceTest {
         Paciente pacienteNuevo = new Paciente("hola","tul",10,null, null, null);
         assertDoesNotThrow(() -> gestionTurnoService.ingresarPaciente(pacienteNuevo));
         Paciente pacienteGuardado = contenedor.PacientesDB.get(10);
+        assertNotNull(pacienteGuardado);
         assertEquals(pacienteNuevo, pacienteGuardado);
     }
 

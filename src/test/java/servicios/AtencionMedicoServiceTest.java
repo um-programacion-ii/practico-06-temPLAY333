@@ -3,18 +3,15 @@ package servicios;
 import contenedor.Contenedor;
 import entidades.Medico;
 import entidades.Paciente;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
-import org.mockito.Mockito.*;
 
 import java.util.Random;
 
-import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.when;
 
 public class AtencionMedicoServiceTest {
@@ -28,10 +25,17 @@ public class AtencionMedicoServiceTest {
     public void setUp() {
         atencionMedicoService = AtencionMedicoService.getInstancia();
         contenedor = new Contenedor();
+        contenedor.init();
         medico = contenedor.MedicosDB.get(1);
         paciente = contenedor.PacientesDB.get(1);
         random = Mockito.mock(Random.class);  // Crea un doble de Random
         atencionMedicoService.setRandom(random);
+    }
+
+    @AfterEach
+    public void tearDown() {
+        contenedor.reset();
+        contenedor = null;
     }
 
     @Test

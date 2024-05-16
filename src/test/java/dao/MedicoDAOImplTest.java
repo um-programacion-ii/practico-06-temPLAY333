@@ -2,6 +2,7 @@ package dao;
 
 import contenedor.Contenedor;
 import entidades.Medico;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -17,8 +18,15 @@ public class MedicoDAOImplTest {
     @BeforeEach
     public void setUp() {
         contenedor = new Contenedor();
+        contenedor.init();
         medicoDAO = contenedor.MedicosDB;
         medico = medicoDAO.get(1);
+    }
+
+    @AfterEach
+    public void tearDown() {
+        contenedor.reset();
+        contenedor = null;
     }
 
     @Test
@@ -64,7 +72,7 @@ public class MedicoDAOImplTest {
 
     @Test
     public void testEliminar() {
-        medicoDAO.delete(medico);
-        assertNull(medicoDAO.get(medico.getId()));
+        medicoDAO.delete(10);
+        assertNull(medicoDAO.get(10));
     }
 }

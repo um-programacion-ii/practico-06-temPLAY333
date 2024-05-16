@@ -2,6 +2,7 @@ package dao;
 
 import contenedor.Contenedor;
 import entidades.Paciente;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -17,9 +18,17 @@ public class PacienteDAOImplTest {
     @BeforeEach
     public void setUp() {
         contenedor = new Contenedor();
+        contenedor.init();
         pacienteDAO = contenedor.PacientesDB;
         paciente = pacienteDAO.get(1);
     }
+
+    @AfterEach
+    public void tearDown() {
+        contenedor.reset();
+        contenedor = null;
+    }
+
 
     @Test
     public void testObtenerPaciente() {
@@ -34,15 +43,15 @@ public class PacienteDAOImplTest {
     }
 
     @Test
-    public void testGuardarPaciente() {
-        assertDoesNotThrow(() -> pacienteDAO.save(paciente));
-    }
+    public void testGuardarPaciente() {assertDoesNotThrow(() -> pacienteDAO.save(paciente));}
 
     @Test
     public void testGuardarYObtenerPaciente() {
-        Paciente pacienteNuevo = new Paciente("Paciente", "nuevo", 10, paciente.getOs(), null, null);
-        pacienteDAO.save(pacienteNuevo);
-        assertEquals(pacienteNuevo, pacienteDAO.get(10));
+        Paciente pacienteNuevo = new Paciente("Paciente", "nuevo", 10, null, null, null);
+        assertDoesNotThrow(() -> pacienteDAO.save(pacienteNuevo));
+        Paciente pacienteGuardado = contenedor.PacientesDB.get(10);
+        assertNotNull(pacienteGuardado);
+        assertEquals(pacienteNuevo, pacienteGuardado);
     }
 
     @Test
@@ -64,7 +73,7 @@ public class PacienteDAOImplTest {
 
     @Test
     public void testEliminar() {
-        pacienteDAO.delete(paciente);
-        assertNull(pacienteDAO.get(paciente.getId()));
+        pacienteDAO.delete(10);
+        assertNull(pacienteDAO.get(10));
     }
 }

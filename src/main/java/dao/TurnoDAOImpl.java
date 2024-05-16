@@ -24,6 +24,11 @@ public class TurnoDAOImpl implements TurnoDAO {
     }
 
     @Override
+    public void resetInstance() {
+        instance = null;
+    }
+
+    @Override
     public Turno get(int id) {
         return turnos.get(id);
     }
@@ -43,7 +48,7 @@ public class TurnoDAOImpl implements TurnoDAO {
     }
 
     @Override
-    public void delete(Turno turno) {
-        turnos.remove(turno.getId());
+    public void delete(int id) {
+        turnos.remove(id);
     }
 }

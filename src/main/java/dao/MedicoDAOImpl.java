@@ -22,6 +22,11 @@ public class MedicoDAOImpl implements MedicoDAO {
     }
 
     @Override
+    public void resetInstance() {
+        instance = null;
+    }
+
+    @Override
     public Medico get(int dni) {
         return medicos.get(dni);
     }
@@ -42,7 +47,7 @@ public class MedicoDAOImpl implements MedicoDAO {
     }
 
     @Override
-    public void delete(Medico medico) {
-        medicos.remove(medico.getId());
+    public void delete(int id) {
+        medicos.remove(id);
     }
 }

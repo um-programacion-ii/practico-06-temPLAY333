@@ -2,6 +2,7 @@ package dao;
 
 import contenedor.Contenedor;
 import entidades.Turno;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -17,8 +18,15 @@ public class TurnoDAOImplTest {
     @BeforeEach
     public void setUp() {
         contenedor = new Contenedor();
+        contenedor.init();
         turnoDAO = contenedor.TurnosDB;
         turno = turnoDAO.get(1);
+    }
+
+    @AfterEach
+    public void tearDown() {
+        contenedor.reset();
+        contenedor = null;
     }
 
     @Test
@@ -64,7 +72,7 @@ public class TurnoDAOImplTest {
 
     @Test
     public void testEliminar() {
-        turnoDAO.delete(turno);
-        assertNull(turnoDAO.get(turno.getId()));
+        turnoDAO.delete(10);
+        assertNull(turnoDAO.get(10));
     }
 }

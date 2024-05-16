@@ -6,6 +6,7 @@ import entidades.Paciente;
 import entidades.Receta;
 import excepciones.CantidadInsuficienteException;
 import excepciones.EntidadNullException;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -23,7 +24,14 @@ public class GestionFarmaciaServiceTest {
     public void setUp() {
         gestionFarmaciaService = GestionFarmaciaService.getInstancia();
         contenedor = new Contenedor();
+        contenedor.init();
         paciente = contenedor.PacientesDB.get(4);
+    }
+
+    @AfterEach
+    public void tearDown() {
+        contenedor.reset();
+        contenedor = null;
     }
 
     @Test
@@ -37,8 +45,8 @@ public class GestionFarmaciaServiceTest {
 
     @Test
     public void testNoTenerReceta() {
-        Paciente sinReceta = contenedor.PacientesDB.get(1);
-        assertThrows(EntidadNullException.class, () -> gestionFarmaciaService.tenerReceta(sinReceta));
+        paciente.setReceta(null);
+        assertThrows(EntidadNullException.class, () -> gestionFarmaciaService.tenerReceta(paciente));
     }
 
     @Test
@@ -66,7 +74,7 @@ public class GestionFarmaciaServiceTest {
 
     @Test
     public void testAgregarMedicamento() {
-        gestionFarmaciaService.agregarMedicamento("Nuevo medicamento");
+        assertDoesNotThrow(() -> gestionFarmaciaService.agregarMedicamento("Nuevo medicamento"));
         Medicamento medicamento = contenedor.MedicamentosDB.get(10);
         assertNotNull(medicamento);
         assertEquals("Nuevo medicamento", medicamento.getNombre());

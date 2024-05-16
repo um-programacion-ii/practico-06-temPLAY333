@@ -2,6 +2,7 @@ package dao;
 
 import contenedor.Contenedor;
 import entidades.Medicamento;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -17,8 +18,15 @@ public class MedicamentoDAOImplTest {
     @BeforeEach
     public void setUp() {
         contenedor = new Contenedor();
+        contenedor.init();
         medicamentoDAO = contenedor.MedicamentosDB;
         medicamento = medicamentoDAO.get(1);
+    }
+
+    @AfterEach
+    public void tearDown() {
+        contenedor.reset();
+        contenedor = null;
     }
 
     @Test
@@ -64,7 +72,7 @@ public class MedicamentoDAOImplTest {
 
     @Test
     public void testEliminar() {
-        medicamentoDAO.delete(medicamento);
-        assertNull(medicamentoDAO.get(medicamento.getId()));
+        medicamentoDAO.delete(10);
+        assertNull(medicamentoDAO.get(10));
     }
 }

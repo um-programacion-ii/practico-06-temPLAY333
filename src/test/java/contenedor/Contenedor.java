@@ -13,15 +13,14 @@ public class Contenedor {
     public PacienteDAO PacientesDB;
     public TurnoDAO TurnosDB;
 
-    public Contenedor() {
-        reset();
-    }
+    public Contenedor() {}
 
-    public void reset() {
+    public void init() {
         MedicamentosDB = MedicamentoDAOImpl.getInstance();
         MedicosDB = MedicoDAOImpl.getInstance();
         PacientesDB = PacienteDAOImpl.getInstance();
         TurnosDB = TurnoDAOImpl.getInstance();
+
 
         // Crear Obras Sociales
         ObraSocial os1 = new ObraSocial("Medife", 1);
@@ -64,10 +63,11 @@ public class Contenedor {
         TurnosDB.save(turno2);
 
         // Crear Medicamentos
-        Medicamento medicamento = new Medicamento("Ibuprofeno",50,2);
+        Medicamento medicamento = new Medicamento("Medicamento",50,1);
         MedicamentosDB.save(medicamento);
-        medicamento = new Medicamento("Medicamento",50,1);
+        medicamento = new Medicamento("Ibuprofeno",50,2);
         MedicamentosDB.save(medicamento);
+
 
         // Crear Receta
         List<Medicamento> medicamentos = new ArrayList<>();
@@ -83,5 +83,12 @@ public class Contenedor {
         PacientesDB.save(paciente);
         paciente = new Paciente("Enfermo", "Mental", 4, os1, null, receta);
         PacientesDB.save(paciente);
+    }
+
+    public void reset (){
+        MedicamentosDB.resetInstance();
+        MedicosDB.resetInstance();
+        PacientesDB.resetInstance();
+        TurnosDB.resetInstance();
     }
 }

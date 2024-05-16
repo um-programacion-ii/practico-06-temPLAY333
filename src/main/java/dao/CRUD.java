@@ -7,5 +7,6 @@ public interface CRUD<T> {
     List<T> getAll(); // Read
     void save(T t); // Create
     void update(T t); // Update
-    void delete(T t); // Delete
+    void delete(int id); // Delete
+    void resetInstance();
 }

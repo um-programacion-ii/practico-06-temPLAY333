@@ -23,6 +23,11 @@ public class PacienteDAOImpl implements PacienteDAO {
     }
 
     @Override
+    public void resetInstance() {
+        instance = null;
+    }
+
+    @Override
     public Paciente get(int dni) {
         return pacientes.get(dni);
     }
@@ -43,7 +48,7 @@ public class PacienteDAOImpl implements PacienteDAO {
     }
 
     @Override
-    public void delete(Paciente paciente) {
-        pacientes.remove(paciente.getId());
+    public void delete(int id) {
+        pacientes.remove(id);
     }
 }

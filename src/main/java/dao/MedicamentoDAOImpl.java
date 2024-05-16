@@ -24,6 +24,11 @@ public class MedicamentoDAOImpl implements MedicamentoDAO {
     }
 
     @Override
+    public void resetInstance() {
+        instance = null;
+    }
+
+    @Override
     public Medicamento get(int id) {
         return medicamentos.get(id);
     }
@@ -44,7 +49,7 @@ public class MedicamentoDAOImpl implements MedicamentoDAO {
     }
 
     @Override
-    public void delete(Medicamento medicamento) {
-        medicamentos.remove(medicamento.getId());
+    public void delete(int id) {
+        medicamentos.remove(id);
     }
 }
