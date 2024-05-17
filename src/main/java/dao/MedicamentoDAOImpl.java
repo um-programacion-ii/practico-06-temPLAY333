@@ -10,7 +10,7 @@ import java.util.Map;
 
 public class MedicamentoDAOImpl implements MedicamentoDAO {
     private static MedicamentoDAOImpl instance;
-    private Map<Integer, Medicamento> medicamentos = new HashMap<>();
+    private static Map<Integer, Medicamento> medicamentos = new HashMap<>();
 
     private MedicamentoDAOImpl() {
         // constructor privado para prevenir instanciación
@@ -24,8 +24,8 @@ public class MedicamentoDAOImpl implements MedicamentoDAO {
     }
 
     @Override
-    public void resetInstance() {
-        instance = null;
+    public void resetDataBase() {
+        medicamentos = new HashMap<>();
     }
 
     @Override

@@ -8,5 +8,5 @@ public interface CRUD<T> {
     void save(T t); // Create
     void update(T t); // Update
     void delete(int id); // Delete
-    void resetInstance();
+    void resetDataBase();
 }

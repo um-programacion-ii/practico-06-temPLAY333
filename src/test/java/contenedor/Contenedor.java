@@ -86,9 +86,9 @@ public class Contenedor {
     }
 
     public void reset (){
-        MedicamentosDB.resetInstance();
-        MedicosDB.resetInstance();
-        PacientesDB.resetInstance();
-        TurnosDB.resetInstance();
+        MedicamentosDB.resetDataBase();
+        MedicosDB.resetDataBase();
+        PacientesDB.resetDataBase();
+        TurnosDB.resetDataBase();
     }
 }

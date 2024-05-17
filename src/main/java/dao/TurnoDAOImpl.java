@@ -10,7 +10,7 @@ import java.util.Map;
 
 public class TurnoDAOImpl implements TurnoDAO {
     private static TurnoDAOImpl instance;
-    private Map<Integer, Turno> turnos = new HashMap<>();
+    private static Map<Integer, Turno> turnos = new HashMap<>();
 
     private TurnoDAOImpl() {
         // constructor privado para prevenir instanciación
@@ -24,8 +24,8 @@ public class TurnoDAOImpl implements TurnoDAO {
     }
 
     @Override
-    public void resetInstance() {
-        instance = null;
+    public void resetDataBase() {
+        turnos = new HashMap<>();
     }
 
     @Override
